@@ -13,12 +13,16 @@ def get_avg(number):
     return sum(number)/len(number)
 print(get_avg([10,20,30]))
 
-numbers = [1,2,3,4,5,6]
-for n in numbers:
-    print(n)
+def solution(n):
+    answer = [] 
+    for i in range(1,n+1):
+        if i % 2 == 1:
+            answer.append(i)
+    return answer
+print(solution(10))
 
-if n % 2 == 0:
-    evens.append(n)
-    print(n)
-else: 
-    print()
+
+
+
+
+
