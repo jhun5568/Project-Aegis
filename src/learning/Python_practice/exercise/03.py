@@ -9,3 +9,5 @@ def solution(str):
 
 print(solution("aBcDeF")) # 입력 값을 출력해라
 
+print('\n'.join("abcde"))
+
