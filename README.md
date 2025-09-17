@@ -1,27 +1,29 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![CAD](https://img.shields.io/badge/AutoCAD-000000?style=for-the-badge&logo=autodesk&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
+![CAD](https://img.shields.io/badge/AutoCAD-000000?style=for-the-badge&logo=autodesk&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 # 프로젝트 아이기스 (Project Aegis)
 
-> **20년 경력의 설계 종사자가 Python을 활용해 설계 및 발주 업무의 반복적인 업무를 자동화하는 오픈소스 프로젝트입니다.**
->
+> **실용적인 엑셀 자동화 솔루션: Python과 Pandas를 활용한 업무 프로세스 최적화**
+
 > 이 저장소는 기술 데모와 학습 결과물을 공유합니다. (내부 비즈니스 전략 및 기밀 자료 제외)
 
 ## ✨ 프로젝트 목표
 
-실무에서 마주치는 두 가지 주요 문제를 해결하는 도구를 개발합니다.
+실무에서 마주치는 반복적인 업무를 자동화하는 도구를 개발합니다.
 
-1.  **편의점 인테리어 설계 자동화:** CAD 도면에서 자재 수량(BOM)을 자동 추출하고, 견적서와 발주서를 생성합니다.
-2.  **금속 구조물 제작 프로세스 자동화:** CAD 도면에서 자재 수량(BOM)을 자동 추출하고, 조달 및 사급 금속구조물 발주 프로세스에서 발생하는 문서 작업을 자동화합니다.
+1.  **엑셀 기반 데이터 관리:** 전문가 지식의 체계적 정리 및 활용
+2.  **자동화 보고서 생성:** 자재 명세서 및 발주서 자동 생성
+3.  **재고 통합 관리:** 실시간 재고 추적 및 최적 발주량 계산
 
 ## 🛠️ 주요 기술 스택
 
-*   **주력:** Python, ezdxf (CAD 파싱), pandas (데이터 처리), openpyxl (Excel 자동화)
+*   **주력:** Python, Pandas (데이터 처리), Openpyxl (Excel 자동화)
+*   **데이터 관리:** 엑셀 기반 데이터베이스
 *   **시각화/배포:** Streamlit (웹 대시보드)
-*   **데이터 관리:** SQLite, CSV
 *   **협업/관리:** GitHub, GitHub Actions
 
 ## 🗂 프로젝트 구조
@@ -30,6 +32,8 @@ Project-Aegis/
 ├── src/ # 소스 코드
 │ ├── learning/ # Python & ML 학습 기록
 │ ├── steel_structure/ # 금속 구조물 제작 프로세스 자동화 (Core)
+│   ├── excel_automation/ # 엑셀 자동화 핵심 기능
+│   └── inventory_management/ # 재고 관리 모듈
 │ ├── convenience_store/ # 편의점 인테리어 자동화 (Co-Core)
 │ ├── expansion/ # Revit/Dynamo 연구 자료
 │ └── deepdive_project / #팀 프로젝트 외부 공개용 폴더
