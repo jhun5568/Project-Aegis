@@ -32,21 +32,21 @@
 ## 🗂 프로젝트 구조
 ```
 Project-Aegis/
-├── src/ # 소스 코드
-│ ├── learning/ # Python & ML 학습 기록
-│ ├── steel_structure/ # 금속 구조물 제작 프로세스 자동화 (Core)
-│   ├── excel_automation/ # 엑셀 자동화 핵심 기능
-│   └── inventory_management/ # 재고 관리 모듈
-│ ├── convenience_store/ # 편의점 인테리어 자동화 (Co-Core)
-│ ├── expansion/ # Revit/Dynamo 연구 자료
-│ └── deepdive_project / #팀 프로젝트 외부 공개용 폴더
-├── docs/ # 문서
-│ └── showcase/ # 시연 자료 (시나리오, 기술 스택)
-├── data/ # 데이터
-│ └── samples/ # 샘플 데이터 (CSV, Excel)
-├── scripts/ # 스크립트
-│ └── tools/ # 유틸리티 스크립트
+├── 📂learning/ # Python & ML 학습 기록
+├── 📂docs/ # 문서
+│ └── 📂showcase/ # 시연 자료 (시나리오, 기술 스택)
+├── 📂 samples/              # 📄 데모 실행에 필요한 '샘플 데이터'
+│   └── sample_database.xlsx
+│
+├── 📜 dashboard.py           # 🚀 메인 Streamlit 대시보드 실행 파일
+├── 📜 bom_generator.py       # (예시) BOM 생성 핵심 로직
+├── 📜 utils.py               # (예시) 공통 함수 모음
+│
+├── 📜 README.md              # 쇼룸의 얼굴
+├── 📜 requirements.txt        # 필요한 부품 목록
+└── 📜 .gitignore             # 버전 관리에서 제외할 파일 목록
 └── README.md # 이 파일
+
 ```
 
 
