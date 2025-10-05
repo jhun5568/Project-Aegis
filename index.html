@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aegis‑DX | 두호 맞춤형 자동화 솔루션</title>
+  <meta name="description" content="견적·발주·자재내역을 자동화하는 금속구조물 전용 시스템. 신입사원도 3분 만에 견적서를 생성하고, 재질별 발주서를 자동 분리합니다." />
+  <meta property="og:title" content="Aegis‑DX | 두호 맞춤형 자동화 솔루션" />
+  <meta property="og:description" content="금속구조물 전용 자동화: 견적·발주·자재내역 원클릭 생성" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/0ea5e9/ffffff&text=Dooho+Automation+v1.0" />
+  <meta property="og:locale" content="ko_KR" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚙️</text></svg>">
+  <style>
+    :root {
+      --bg: #0b1220; /* 배경 남청색 */
+      --card: #0f172a; /* 카드 남청색 */
+      --muted: #9fb3c8; /* 설명 텍스트 */
+      --fg: #e6eef7; /* 본문 텍스트 */
+      --brand: #00c2ff; /* 포인트 */
+      --brand-dk: #0891b2;
+      --accent: #a7f3d0;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Apple SD Gothic Neo, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: radial-gradient(1200px 800px at 70% -10%, rgba(0,194,255,.2), transparent 60%), var(--bg); color: var(--fg); }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 92vw); margin: 0 auto; }
+    .nav { position: sticky; top: 0; backdrop-filter: saturate(140%) blur(8px); background: rgba(11,18,32,.65); border-bottom: 1px solid rgba(255,255,255,.05); z-index: 10; }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; padding: 14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px; }
+    .brand-badge { width:32px; height:32px; display:grid; place-items:center; background: linear-gradient(135deg, var(--brand), #60a5fa); color:#00131a; border-radius:10px; font-weight:900; }
+    .nav a.btn { padding: 10px 14px; border:1px solid rgba(255,255,255,.15); border-radius:12px; font-weight:600; }
+    .nav a.btn.primary { background: linear-gradient(180deg, var(--brand), #38bdf8); color:#00131a; border: none; }
+
+    .hero { padding: 90px 0 60px; display:grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items:center; }
+    .hero h1 { font-size: clamp(28px, 4.2vw, 48px); line-height: 1.15; margin: 0 0 14px; }
+    .hero p { color: var(--muted); font-size: clamp(15px, 1.8vw, 18px); margin: 0 0 16px; }
+    .pill { display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; background: rgba(167,243,208,.08); border:1px solid rgba(167,243,208,.25); color: var(--accent); font-weight:700; font-size:13px; letter-spacing:.2px; }
+    .cta { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+    .btn { padding: 12px 16px; border-radius: 12px; border:1px solid rgba(255,255,255,.15); background:#0b1324; color:#e6eef7; font-weight:700; }
+    .btn.primary { background: linear-gradient(180deg, var(--brand), #38bdf8); color:#00131a; border: none; }
+    .btn.ghost { background: transparent; }
+    .note { font-size:13px; color: var(--muted); }
+
+    .mock { background: linear-gradient(180deg, #0b1324, #0a1a2f); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:16px; box-shadow: 0 20px 60px rgba(0,0,0,.45); }
+    .mock .bar { height:10px; display:flex; gap:6px; }
+    .dot { width:10px; height:10px; border-radius:999px; background:#334155; }
+    .screen { margin-top:10px; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,.06); }
+    .screen img { width:100%; display:block; }
+
+    section { padding: 64px 0; }
+    .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
+    .card { background: var(--card); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding: 18px; }
+    .card h3 { margin:0 0 6px; font-size:18px; }
+    .card p { margin:0; color: var(--muted); font-size:15px; }
+    .kpi { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:18px; }
+    .kpi .box { background: rgba(56,189,248,.08); border:1px solid rgba(56,189,248,.25); border-radius:14px; padding:14px; text-align:center; }
+    .kpi .num { font-size:28px; font-weight:900; color:#7dd3fc; }
+    .kpi .lbl { color: var(--muted); font-size:12px; letter-spacing:.3px; text-transform: uppercase; }
+
+    .pricing { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
+    .plan { background: var(--card); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:20px; position:relative; }
+    .plan h4 { margin:4px 0 2px; font-size:20px; }
+    .plan .price { font-size:28px; font-weight:900; }
+    .plan ul { margin:10px 0 0; padding-left:18px; color: var(--muted); font-size:14px; }
+
+    .faq dt { font-weight:800; margin: 12px 0 6px; }
+    .faq dd { margin: 0 0 10px; color: var(--muted); }
+
+    footer { padding: 40px 0 60px; color: var(--muted); font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid-3, .pricing, .kpi { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><div class="brand-badge">DX</div>Aegis‑DX • 두호 맞춤형 자동화 솔루션</div>
+      <nav style="display:flex; gap:10px; align-items:center;">
+        <a class="btn ghost" href="#features">기능</a>
+        <a class="btn ghost" href="#impact">효과</a>
+        <a class="btn ghost" href="#pricing">도입</a>
+        <a class="btn primary" href="#contact">무료 시연</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <div>
+        <div class="pill">⚡ 30분 걸리던 견적 → 3분</div>
+        <h1>금속구조물 전용 자동화<br/>견적·발주·자재내역 <span style="color:var(--brand)">원클릭</span></h1>
+        <p class="note" style="margin-top:6px">Developed by <strong>배성준</strong> · 20년 경력 금속구조물 설계 전문가</p>
+        <p>규격화된 휀스/울타리 업무에 최적화. 신입도 표준화된 프로세스로 동일 품질의 문서를 생성합니다. 재질별 발주 분리, 파이프 개수 자동 계산까지.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">15분 라이브 시연 요청</a>
+          <a class="btn ghost" href="#pricing">도입 안내 보기</a>
+        </div>
+        <p class="note">* 차양/자전거보관대 등 맞춤형 품목은 단계적 확장 로드맵에 포함되어 있습니다.</p>
+      </div>
+      <div class="mock" id="demo">
+        <div class="bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <div class="screen">
+          <!-- TODO: 실제 Streamlit 실행 화면 캡처를 /images/screenshot-demo.png 로 교체하세요 -->
+          <img alt="데모 화면 (실제 작동 캡처 권장)" src="./images/screenshot-demo.jpg" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 신뢰 배지/사용처 섹션 (PicPick 스타일) -->
+    <section class="container" id="trust">
+      <div class="card" style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+        <div class="pill">검증된 워크플로우</div>
+        <div class="note">실제 현업 데이터 기반 · 템플릿 호환 · 신입 교육용 가이드 제공</div>
+        <div style="margin-left:auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <span class="note">Excel</span>
+          <span class="note">Streamlit</span>
+          <span class="note">Pandas</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="features">
+      <h2>주요 기능</h2>
+      <div class="grid-3" style="margin-top:14px;">
+        <div class="card"><h3>🧮 신입도 3분 만에 끝나는 견적서</h3><p>모델·수량만 넣으면 단가 매칭과 템플릿 출력까지 자동. 실수는 줄이고, 속도는 올립니다.</p></div>
+        <div class="card"><h3>🏷️ 발주, 더 이상 묻지 않습니다</h3><p>“어디에 발주할까요?” 대신 재질(HGI/STS)에 맞춰 최적 공급사로 자동 분리합니다.</p></div>
+        <div class="card"><h3>📦 m → EA 자동 변환</h3><p>“파이프 132m는 몇 본?” 고민 끝. BOM 기반으로 본수(EA)까지 정확히 계산합니다.</p></div>
+        <div class="card"><h3>🔎 원하는 모델 3초 검색</h3><p>식별번호·치수(W/H)·부분일치까지 한 번에 찾습니다.</p></div>
+        <div class="card"><h3>📊 재고, 부족 알림까지</h3><p>재질/규격별 잔여재고와 부족 알림으로 재발주 타이밍을 놓치지 않습니다.</p></div>
+        <div class="card"><h3>🧰 사내 양식 그대로</h3><p>견적·발주·자재내역 엑셀 양식을 유지하며 자동 채움합니다.</p></div>
+      </div>
+    </section>
+
+    <section class="container" id="impact">
+      <h2>도입 효과</h2>
+      <div class="kpi">
+        <div class="box"><div class="num">-90%</div><div class="lbl">견적 소요시간</div></div>
+        <div class="box"><div class="num">-80%</div><div class="lbl">발주 오류</div></div>
+        <div class="box"><div class="num">+100%</div><div class="lbl">신입 활용성</div></div>
+      </div>
+      <div class="grid-3" style="margin-top:18px;">
+        <div class="card"><h3>⏱️ 빠른 납기</h3><p>반복 작업 자동화로 응답 속도 향상.</p></div>
+        <div class="card"><h3>✅ 표준화</h3><p>사장 지시 없이도 동일 품질 산출물.</p></div>
+        <div class="card"><h3>🔒 리스크 절감</h3><p>오타/계산 실수 감소, 책임 범위 명확화.</p></div>
+      </div>
+    </section>
+
+    <section class="container" id="pricing">
+      <h2>도입 방식</h2>
+      <p class="note">PicPick 스타일처럼 단순하고 직관적인 비교 구성으로 정리했습니다.</p>
+      <div class="card" style="overflow:auto; margin-top:12px;">
+        <table style="width:100%; border-collapse:collapse; font-size:15px;">
+          <thead>
+            <tr style="background:rgba(255,255,255,.04)">
+              <th style="text-align:left; padding:12px;">항목</th>
+              <th style="text-align:center; padding:12px;">파일럿 (추천 시작)</th>
+              <th style="text-align:center; padding:12px;">맞춤 구축</th>
+              <th style="text-align:center; padding:12px;">유지보수</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:12px;">기간</td>
+              <td style="text-align:center; padding:12px;">2주 테스트</td>
+              <td style="text-align:center; padding:12px;">4~6주</td>
+              <td style="text-align:center; padding:12px;">연간</td>
+            </tr>
+            <tr style="background:rgba(255,255,255,.02)">
+              <td style="padding:12px;">범위</td>
+              <td style="text-align:center; padding:12px;">휀스 품목 · 시연</td>
+              <td style="text-align:center; padding:12px;">사내 양식/데이터 반영</td>
+              <td style="text-align:center; padding:12px;">버그 수정/개선</td>
+            </tr>
+            <tr>
+              <td style="padding:12px;">결과물</td>
+              <td style="text-align:center; padding:12px;">개선 리포트</td>
+              <td style="text-align:center; padding:12px;">운영 가능한 배포본</td>
+              <td style="text-align:center; padding:12px;">분기 점검 리포트</td>
+            </tr>
+            <tr style="background:rgba(255,255,255,.02)">
+              <td style="padding:12px;">비용</td>
+              <td style="text-align:center; padding:12px;">문의</td>
+              <td style="text-align:center; padding:12px;">견적 제시</td>
+              <td style="text-align:center; padding:12px;">연간 계약</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cta" style="margin-top:14px;">
+        <a class="btn primary" href="#contact">15분 시연 요청하기</a>
+        <a class="btn" href="#faq">도입 FAQ 보기</a>
+      </div>
+    </section>
+
+    <section class="container" id="faq">
+      <h2>자주 묻는 질문</h2>
+      <dl class="faq">
+        <dt>차양이나 현장 맞춤형 품목도 가능한가요?</dt>
+        <dd>완전 자동화는 어렵지만, 데이터/문서 표준화로 반자동화가 가능합니다. 단계적으로 확장합니다.</dd>
+        <dt>사내 엑셀/양식을 그대로 쓸 수 있나요?</dt>
+        <dd>네. 기존 템플릿(견적/발주/자재내역)을 유지하며 자동 채움합니다.</dd>
+        <dt>보안과 데이터 백업은 어떻게 하나요?</dt>
+        <dd>초기엔 온프레미스/내부망 사용을 권장하고, 백업 가이드를 제공합니다. 필요 시 클라우드로 전환합니다.</dd>
+      </dl>
+    </section>
+
+    <section class="container" id="contact">
+      <h2>시연 요청 / 문의</h2>
+      <p class="note">15분 라이브 시연을 제공합니다. 부담 없이 질문하세요.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:jhun5568@gmail.com?subject=%5BAegis‑DX%5D+15%EB%B6%84+%EB%9D%BC%EC%9D%B4%EB%B8%8C+%EC%8B%9C%EC%97%B0+%EC%9A%94%EC%B2%AD&body=%EC%82%AC%EC%97%85%EB%AA%A9%EC%A0%81(%EA%B2%AC%EC%A0%81%2F%EB%B0%9C%EC%A3%BC%2F%EC%9E%90%EC%9E%AC%EB%82%B4%EC%97%AD)%EA%B3%BC+%EB%AA%A8%EB%8D%B8%EB%AA%85%2F%EC%88%98%EB%9F%89%EC%9D%84+%EA%B3%B5%EC%9C%A0%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94.">15분 라이브 시연 요청하기</a>
+        <button class="btn" id="copy">이메일 복사</button>
+        <span class="note" id="copied" style="display:none">복사되었습니다: your@email.com</span>
+      </div>
+    </section>
+      <!-- 모바일용 하단 고정 CTA (PicPick식 간단 CTA) -->
+    <div id="sticky-cta" style="position:fixed; left:0; right:0; bottom:0; padding:10px 14px; background:rgba(11,18,32,.9); border-top:1px solid rgba(255,255,255,.08); display:none;">
+      <div class="container" style="display:flex; gap:10px; align-items:center; justify-content:space-between;">
+        <span class="note">Aegis-DX를 15분 만에 확인해 보세요.</span>
+        <a class="btn primary" href="#contact" style="padding:10px 14px;">시연 요청</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+      <div>© <span id="y"></span> Aegis‑DX • 금속구조물 DX · <span title="20년 경력 금속구조물 설계 종사자">Developed by Aegis_BIMer</span></div>
+      <div style="display:flex; gap:12px;">
+        <a href="#features">기능</a>
+        <a href="#pricing">도입</a>
+        <a href="#contact">문의</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 스무스 스크롤
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+    // 이메일 복사
+    const email = 'jhun5568@gmail.com'; // ← 여기만 바꾸면 됩니다
+    document.getElementById('copy').addEventListener('click', ()=>{
+      navigator.clipboard.writeText(email).then(()=>{
+        const tag = document.getElementById('copied');
+        tag.style.display='inline'; setTimeout(()=> tag.style.display='none', 2000);
+      });
+    });
+    // 연도 갱신
+    document.getElementById('y').innerText = new Date().getFullYear();
+    </script>
+  <script>
+    // 화면 폭이 좁을 때만 하단 고정 CTA 노출
+    const mq = window.matchMedia('(max-width: 900px)');
+    const sticky = document.getElementById('sticky-cta');
+    const toggleSticky = () => sticky.style.display = mq.matches ? 'block' : 'none';
+    mq.addEventListener ? mq.addEventListener('change', toggleSticky) : mq.addListener(toggleSticky);
+    toggleSticky();
+  </script>
+</body>
+</html>
