@@ -263,10 +263,21 @@
 
     <section class="container" id="sample-app" style="text-align:center;">
       <h2>샘플 앱 체험하기</h2>
-      <p class="note" style="max-width: 600px; margin: 0 auto 24px;">Aegis-DX의 핵심 기능을 간소화된 버전으로 직접 체험해 보세요. 별도의 설치 없이 웹에서 바로 실행됩니다.</p>
+      <p class="note" style="max-width: 600px; margin: 0 auto 24px;">Aegis-DX의 핵심 기능을 간소화된 버전으로 직접 체험해 보세요.</p>
       <div class="card" style="padding: 48px;">
-        <p style="font-size: 18px; margin-bottom: 24px; color: var(--muted);">샘플 앱은 현재 준비 중입니다. 곧 공개될 예정입니다!</p>
-        <button class="btn primary" disabled>샘플 앱 실행 (준비 중)</button>
+        <p style="font-size: 18px; margin-bottom: 24px; color: var(--muted);">Aegis-Demo 테넌트로 샘플 앱을 체험할 수 있습니다.</p>
+        <div style="margin-bottom: 24px; padding: 16px; background: rgba(45, 212, 191, 0.1); border-radius: 8px; border-left: 4px solid var(--accent);">
+          <p style="margin: 0 0 12px; font-size: 14px;"><strong>데모 계정 로그인 정보:</strong></p>
+          <p style="margin: 0 0 8px; font-size: 14px;">📧 이메일: <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">demo@demo.com</code></p>
+          <p style="margin: 0; font-size: 14px;">🔑 비밀번호: <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">demo</code></p>
+        </div>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn primary" onclick="launchDemoApp()" style="cursor: pointer;">🎯 로컬 데모 앱 실행</button>
+        </div>
+        <p style="margin-top: 16px; font-size: 12px; color: var(--muted);">
+          💡 Streamlit 앱이 로컬에서 실행 중이어야 합니다.<br/>
+          터미널에서: <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">TENANT_ID=demo streamlit run app/launcher.py</code>
+        </p>
       </div>
     </section>
 
@@ -288,13 +299,20 @@
   </footer>
 
   <script>
+    // Demo App Launcher
+    function launchDemoApp() {
+      // 로컬 Streamlit 앱 (localhost:8501)으로 연결
+      // ?tenant=demo 파라미터를 통해 데모 테넌트 선택
+      window.open('http://localhost:8501?tenant=demo', '_blank');
+    }
+
     // ROI Calculator
     const quotes = document.getElementById('quotes');
     const employees = document.getElementById('employees');
     const salary = document.getElementById('salary');
     const result = document.getElementById('result');
     const annualResult = document.getElementById('annual-result');
-    
+
     const quotesValue = document.getElementById('quotes-value');
     const employeesValue = document.getElementById('employees-value');
     const salaryValue = document.getElementById('salary-value');
